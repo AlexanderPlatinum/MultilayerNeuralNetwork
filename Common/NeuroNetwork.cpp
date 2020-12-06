@@ -2,7 +2,11 @@
 
 using namespace Common;
 
-NeuroNetwork::NeuroNetwork()
+NeuroNetwork::NeuroNetwork() :
+    countOfInput{0},
+    countOfHidden{0},
+    countOfOutput{0},
+    learnRate{0.0}
 {
     weightsInputToHidden  = nullptr;
     weightsHiddenToOutput = nullptr;
@@ -274,12 +278,12 @@ void NeuroNetwork::deleteAllocatedMemory()
         delete [] weightsHiddenToOutput;
     }
 
-    if (inputCells   != nullptr) { delete [] inputCells;   }
-    if (hiddenCells  != nullptr) { delete [] hiddenCells;  }
-    if (targetValues != nullptr) { delete [] targetValues; }
-    if (calcResult   != nullptr) { delete [] calcResult;   }
-    if (errorsOutput != nullptr) { delete [] errorsOutput; }
-    if (errorsHidden != nullptr) { delete [] errorsHidden; }
+    delete [] inputCells;
+    delete [] hiddenCells;
+    delete [] targetValues;
+    delete [] calcResult;
+    delete [] errorsOutput;
+    delete [] errorsHidden;
 }
 
 void NeuroNetwork::setDefaultActivationFunctions()

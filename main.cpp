@@ -3,7 +3,7 @@
 
 #include "SimpleAI/Warrior.h"
 
-std::vector<SimpleAI::TrainElement> trainElements =
+const std::vector<SimpleAI::TrainElement> trainElements =
 {
     {
         {2.0, 0.0, 0.0, 0.0},
@@ -114,7 +114,7 @@ std::vector<SimpleAI::TrainElement> trainElements =
     },
 };
 
-std::vector<SimpleAI::EnvironmentState> states =
+const std::vector<SimpleAI::EnvironmentState> states =
 {
     {2.0, 1.0, 1.0, 1.0},
     {1.0, 1.0, 1.0, 2.0},
@@ -138,8 +138,8 @@ int main()
 
     std::cout << "Здоровье Нож Пистолет Враг" << std::endl;
 
-    std::vector<SimpleAI::EnvironmentState>::iterator it;
-    for (it = states.begin(); it != states.end(); ++it)
+    std::vector<SimpleAI::EnvironmentState>::const_iterator it;
+    for (it = states.cbegin(); it != states.cend(); ++it)
     {
         std::cout << std::setw(5) << static_cast<int>(it->getHealth());
         std::cout << std::setw(6) << static_cast<int>(it->getKnife());
